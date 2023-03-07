@@ -1,11 +1,15 @@
-import zio.*
-import zhttp.*
+import zio.ZIOAppDefault
+import zio.Console.*
+import zhttp.http._
+import zhttp.http.Http
+import zhttp.service.Server
 
 object Main extends ZIOAppDefault {
 
-  val app: HttpApp[Any, Nothing] = Http.collect[Request] {
-    case Method.GET -> !! / "text" => Response.text("Hello World!")
+  private val app: HttpApp[Any, Nothing] = Http.collect {
+    case Method.GET -> !! / "hello" => Response.text("Hello, world!")
   }
 
-  override def run = Server.serve(app).provide
+  override def run = Server.start(8080, app)
+
 }
