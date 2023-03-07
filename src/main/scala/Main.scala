@@ -1,5 +1,11 @@
-@main def hello: Unit = 
-  println("Hello world!")
-  println(msg)
+import zio.*
+import zhttp.*
 
-def msg = "I was compiled by Scala 3. :)"
+object Main extends ZIOAppDefault {
+
+  val app: HttpApp[Any, Nothing] = Http.collect[Request] {
+    case Method.GET -> !! / "text" => Response.text("Hello World!")
+  }
+
+  override def run = Server.serve(app).provide
+}

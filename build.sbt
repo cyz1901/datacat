@@ -1,4 +1,4 @@
-val scala3Version = "3.2.2"
+val scala3Version = "2.13.8"
 
 lazy val root = project
   .in(file("."))
@@ -8,5 +8,9 @@ lazy val root = project
 
     scalaVersion := scala3Version,
 
-    libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
+    libraryDependencies ++= Seq(
+      "dev.zio" %% "zio" % "2.0.10",
+      "dev.zio" %% "zio-streams" % "2.0.10",
+      "io.d11" %% "zhttp" % "2.0.0-RC11"
+    ) 
   )
