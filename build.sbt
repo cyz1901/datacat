@@ -11,6 +11,7 @@ lazy val root = project
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio" % "2.0.0",
       "dev.zio" %% "zio-streams" % "2.0.0",
-      "io.d11"  %% "zhttp" % "2.0.0-RC10"
+      "io.d11"  %% "zhttp" % "2.0.0-RC10",
+      "com.thesamet.scalapb.zio-grpc" %% "zio-grpc-codegen" % "0.5.0"
     ) 
   )
